@@ -1,4 +1,4 @@
-import { isObject, isDate, encode } from './util'
+import { isPlainObject, isDate, encode } from './util'
 
 export function bulidURL(url: string, params?: any) {
   if (!params) {
@@ -21,7 +21,7 @@ export function bulidURL(url: string, params?: any) {
     values.forEach(val => {
       if (isDate(val)) {
         val = val.toISOString()
-      } else if (isObject(val)) {
+      } else if (isPlainObject(val)) {
         val = JSON.stringify(val)
       }
       pasts.push(`${encode(key)}=${encode(val)}`)
